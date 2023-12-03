@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::num::ParseIntError;
 use std::ops::Add;
-use crate::ex_2022::reader::file_io::read_file;
+use crate::reader::file_io::read_file;
 
 
 const DINGUSES: [&str; 18] = [

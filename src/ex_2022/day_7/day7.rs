@@ -9,8 +9,8 @@ use nom::combinator::opt;
 use nom::{AsChar, IResult};
 use nom::multi::many0;
 use dbg_pls::{color, DebugPls};
-use crate::ex_2022::reader::file_io;
-use crate::ex_2022::reader::file_io::read_file;
+use crate::reader::file_io;
+use crate::reader::file_io::read_file;
 
 use transiter::{IntoTransIter, TransIter};
 
