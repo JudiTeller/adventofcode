@@ -106,13 +106,10 @@ fn process2(input: String) -> i64 {
         let matches = deck.cards.get(&id).unwrap().matches;
         let points = deck.cards.get(&id).unwrap().points;
 
-        for amnt in 0..amount {
-            for win in 1..matches + 1{
-                deck.cards.get_mut(&(id + win)).unwrap().amount += 1;
-            }
-
-            result += points;
+        for win in 1..matches + 1{
+            deck.cards.get_mut(&(id + win)).unwrap().amount += amount;
         }
+        result += amount;
 
     }
 
