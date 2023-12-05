@@ -1,11 +1,9 @@
-use std::num::ParseIntError;
 use regex::Regex;
 use crate::aoc_2023::day_4::day4_data::CardGame;
 use crate::reader::file_io::read_file;
 
 pub fn solve_day_4() {
     let content = read_file("src/aoc_2023/day_4/input.txt");
-    let result = process1(content.clone());
     println!("PART 1 - Result: {}", process1(content.clone()));
     println!("PART 2 - Result: {}", process2(content));
 }
@@ -22,7 +20,6 @@ fn process1(input: String) -> i64 {
     for line in lines {
         let mut line_result = 0;
         let mut winner_count = 0;
-        let test = card_id_re.find(line).unwrap();
         let mut cleaned = card_id_re.replace_all(line, " ");
 
         println!("Cleaned: {}", cleaned);
@@ -67,7 +64,7 @@ fn process2(input: String) -> i64 {
     for line in lines {
         let mut line_result = 0;
         let mut winner_count = 0;
-        let test = card_id_re.find(line).unwrap();
+
         let mut cleaned = card_id_re.replace_all(line, " ");
 
         println!("Cleaned: {}", cleaned);
@@ -104,7 +101,6 @@ fn process2(input: String) -> i64 {
         // 38759447
         let amount = deck.cards.get(&id).unwrap().amount;
         let matches = deck.cards.get(&id).unwrap().matches;
-        let points = deck.cards.get(&id).unwrap().points;
 
         for win in 1..matches + 1{
             deck.cards.get_mut(&(id + win)).unwrap().amount += amount;
