@@ -1,7 +1,7 @@
 
 #[derive(Debug, Copy, Clone)]
 pub struct SeedMapping {
-    pub idx: [i64; 8],
+    pub idx: i64,
 }
 
 
