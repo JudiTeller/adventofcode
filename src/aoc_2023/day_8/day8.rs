@@ -1,7 +1,5 @@
 use std::cell::RefCell;
 use std::collections::HashMap;
-use std::ptr;
-use std::ptr::{null, null_mut};
 use std::rc::Rc;
 use crate::aoc_2023::day_8::day8_data::GraphNode;
 use crate::reader::file_io::read_file;
@@ -9,9 +7,10 @@ use crate::reader::file_io::read_file;
 pub fn solve_day_8() {
     let input = read_file("src/aoc_2023/day_8/input.txt");
 
-    // println!("Day 8, Part 1: {}", process_1(input.clone()));
+    println!("Day 8, Part 1: {}", process_1(input.clone()));
     println!("Day 8, Part 2: {}", process_2(input));
 }
+
 
 
 fn process_1(input: String) -> i64 {
@@ -33,9 +32,9 @@ fn process_1(input: String) -> i64 {
             first_node = node_strings[0].to_string();
         }
 
-        let mut new_left: RefCell<GraphNode>;
-        let mut new_right: RefCell<GraphNode>;
-        let mut new_node = RefCell::new(GraphNode {
+        let new_left: RefCell<GraphNode>;
+        let new_right: RefCell<GraphNode>;
+        let new_node = RefCell::new(GraphNode {
             name: node_strings[0].to_string(),
             left: None,
             right: None,
@@ -124,9 +123,9 @@ fn process_2(input: String) -> i64 {
             first_node = node_strings[0].to_string();
         }
 
-        let mut new_left: RefCell<GraphNode>;
-        let mut new_right: RefCell<GraphNode>;
-        let mut new_node = RefCell::new(GraphNode {
+        let new_left: RefCell<GraphNode>;
+        let new_right: RefCell<GraphNode>;
+        let new_node = RefCell::new(GraphNode {
             name: node_strings[0].to_string(),
             left: None,
             right: None,

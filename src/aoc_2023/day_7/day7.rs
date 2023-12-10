@@ -21,7 +21,7 @@ fn process1(input: String) -> i64 {
         let card_string = split[0];
         let bet = split[1].parse::<i64>().unwrap();
 
-        hands.push(Hand::new(card_string, bet, 1));
+        hands.push(Hand::new(card_string, bet));
     }
 
     // sort hands by comparing
@@ -52,7 +52,7 @@ fn process2(input: String) -> i64 {
         let card_string = split[0];
         let bet = split[1].parse::<i64>().unwrap();
 
-        hands.push(Hand2::new(card_string, bet, 2));
+        hands.push(Hand2::new(card_string, bet));
     }
 
     // sort hands by comparing

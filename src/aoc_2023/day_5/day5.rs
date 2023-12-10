@@ -101,24 +101,26 @@ fn process2(input: String) -> i64 {
         mapper.sort_by(|a, b| a[0].cmp(&b[0]));
     }
 
-    let mut lowest = i64::MAX;
+    // let lowest = i64::MAX;
+    //
+    // for current in 0..mappings.len() {
+    //     for mapper in mappings[current].iter() {
+    //
+    //     }
+    // }
+    //
+    // let mapvals: Vec<i64> = Vec::new();
+    //
+    // // iterate over mappings
+    // for mappers in mappings.last().iter() {
+    //     let counter = 0;
+    // }
+    //
 
-    for current in 0..mappings.len() {
-        for mapper in mappings[current].iter() {
 
-        }
-    }
+    // lowest
 
-    let mut mapvals: Vec<i64> = Vec::new();
-
-    // iterate over mappings
-    for mappers in mappings.last().iter() {
-        let mut counter = 0;
-    }
-
-
-
-    lowest
+    0
 }
 
 

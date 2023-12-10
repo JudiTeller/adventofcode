@@ -1,6 +1,5 @@
 // solution copied and derived from https://gitlab.com/TeNNoX/advent-of-code-2022/-/blob/main/day07/src/main.rs
 
-use std::os::unix::raw::pid_t;
 use std::{borrow::BorrowMut};
 use nom::branch::alt;
 use nom::bytes::complete::{tag, take_till1, take_while1};
@@ -9,11 +8,11 @@ use nom::combinator::opt;
 use nom::{AsChar, IResult};
 use nom::multi::many0;
 use dbg_pls::{color, DebugPls};
-use crate::reader::file_io;
 use crate::reader::file_io::read_file;
 
-use transiter::{IntoTransIter, TransIter};
+use transiter::{IntoTransIter};
 
+#[allow(dead_code)]
 #[derive(Debug, DebugPls)]
 enum File {
     Plain { name: String, size: usize },
@@ -21,20 +20,22 @@ enum File {
 }
 
 #[derive(Debug, DebugPls)]
-#[allow(non_camel_case_types)]
+#[allow(non_camel_case_types, dead_code)]
 enum Command {
     cd { target: String },
     ls { files: Vec<File> },
 }
 
+#[allow(dead_code)]
 pub fn solve_day7() {
     let content = read_file("src/ex_2022/day_7/input.txt");
-    // println!("PART 1 - Result: {}", process1(content.clone()));
+    println!("PART 1 - Result: {}", process1(content.clone()));
 
     println!("PART 2 - total size: {}", process2(content));
 }
 
 
+#[allow(dead_code)]
 fn process1(input: String) -> String {
     let root = parse_session(input.as_str());
 
@@ -56,6 +57,7 @@ fn process1(input: String) -> String {
     total_size.to_string()
 }
 
+#[allow(dead_code)]
 fn process2(input: String) -> String {
     let root = parse_session(input.as_str());
 
@@ -81,6 +83,7 @@ fn process2(input: String) -> String {
 }
 
 
+#[allow(dead_code)]
 fn parse_session(content: &str) -> File {
     let mut root = File::Dir {
         name: "/".into(),
@@ -150,6 +153,7 @@ fn parse_session(content: &str) -> File {
     root
 }
 
+#[allow(dead_code)]
 fn get_dir<'a>(root: &'a mut File, path: &'a Vec<String>) -> &'a mut File {
     let mut cwd = root;
     for target in path {
@@ -175,7 +179,7 @@ fn get_dir<'a>(root: &'a mut File, path: &'a Vec<String>) -> &'a mut File {
     cwd
 }
 
-
+#[allow(dead_code)]
 fn parse_command(input: &str) -> IResult<&str, Command> {
     let (input, cmd_name) = parse_command_name(input).expect("parse command name");
 
@@ -193,6 +197,7 @@ fn parse_command(input: &str) -> IResult<&str, Command> {
     })
 }
 
+#[allow(dead_code)]
 fn parse_ls_output(input: &str) -> IResult<&str, Vec<File>> {
     let (input, output) = parse_command_output(input)?;
     let (remaining_output, files) = many0(parse_file)(output)?;
@@ -203,6 +208,7 @@ fn parse_ls_output(input: &str) -> IResult<&str, Vec<File>> {
     Ok((input, files))
 }
 
+#[allow(dead_code)]
 fn parse_file(input: &str) -> IResult<&str, File> {
     let (input, dir_or_size) = alt((tag("dir"), digit1))(input)?;
     let (input, _) = tag(" ")(input)?;
@@ -223,6 +229,7 @@ fn parse_file(input: &str) -> IResult<&str, File> {
     Ok((input, file))
 }
 
+#[allow(dead_code)]
 fn parse_command_name(input: &str) -> IResult<&str, &str> {
     let (input, _) = tag("$")(input)?;
     let (input, _) = tag(" ")(input)?;
@@ -231,22 +238,26 @@ fn parse_command_name(input: &str) -> IResult<&str, &str> {
     Ok((input, cmd_name))
 }
 
+#[allow(dead_code)]
 fn parse_command_arg(input: &str) -> IResult<&str, &str> {
     let (input, _) = tag(" ")(input)?;
     let (input, arg) = till_eol(input)?;
     Ok((input, arg))
 }
 
+#[allow(dead_code)]
 fn parse_command_output(input: &str) -> IResult<&str, &str> {
     let (input, _) = newline(input)?;
     let (input, output) = take_while1(|c: char| c != '$')(input)?;
     Ok((input, output))
 }
 
+#[allow(dead_code)]
 fn till_eol(input: &str) -> IResult<&str, &str> {
     Ok(take_till1(|c: char| c.is_whitespace())(input)?)
 }
 
+#[allow(dead_code)]
 impl File {
     fn name(&self) -> String {
         match self {

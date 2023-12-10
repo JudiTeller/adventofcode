@@ -17,7 +17,7 @@ fn process1(input: String) -> i64 {
 
     for line in lines {
         // collect numbers with regex and parse to i64
-        let mut numbers = number_re.captures_iter(line).map(|cap| cap[1].parse::<i64>().unwrap()).collect::<Vec<i64>>();
+        let numbers = number_re.captures_iter(line).map(|cap| cap[1].parse::<i64>().unwrap()).collect::<Vec<i64>>();
 
         let mut series: Vec<Vec<i64>> = Vec::new();
         series.push(numbers);
@@ -73,7 +73,7 @@ fn process2(input: String) -> i64 {
 
     for line in lines {
         // collect numbers with regex and parse to i64
-        let mut numbers = number_re.captures_iter(line).map(|cap| cap[1].parse::<i64>().unwrap()).collect::<Vec<i64>>();
+        let numbers = number_re.captures_iter(line).map(|cap| cap[1].parse::<i64>().unwrap()).collect::<Vec<i64>>();
 
         let mut series: Vec<Vec<i64>> = Vec::new();
         series.push(numbers);

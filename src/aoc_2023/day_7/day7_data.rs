@@ -45,7 +45,7 @@ pub struct Hand {
 }
 
 impl Hand {
-    pub fn new(card_string: &str, bet: i64, version: i64) -> Hand {
+    pub fn new(card_string: &str, bet: i64) -> Hand {
         let cards = parse_hand(card_string);
 
         Hand {
@@ -86,7 +86,7 @@ pub struct Hand2 {
 }
 
 impl Hand2 {
-    pub fn new(card_string: &str, bet: i64, version: i64) -> Hand2 {
+    pub fn new(card_string: &str, bet: i64) -> Hand2 {
         let cards = parse_hand2(card_string);
 
         Hand2 {

@@ -14,13 +14,13 @@ fn process1(input: String) -> i64 {
 
     let mut result = 0;
 
-    let mut lines = input.lines();
+    let lines = input.lines();
     let mut card_nr = 1;
 
     for line in lines {
         let mut line_result = 0;
         let mut winner_count = 0;
-        let mut cleaned = card_id_re.replace_all(line, " ");
+        let cleaned = card_id_re.replace_all(line, " ");
 
         println!("Cleaned: {}", cleaned);
 
@@ -58,14 +58,14 @@ fn process2(input: String) -> i64 {
 
     let mut result = 0;
 
-    let mut lines = input.lines();
+    let lines = input.lines();
     let mut card_nr = 1;
 
     for line in lines {
         let mut line_result = 0;
         let mut winner_count = 0;
 
-        let mut cleaned = card_id_re.replace_all(line, " ");
+        let cleaned = card_id_re.replace_all(line, " ");
 
         println!("Cleaned: {}", cleaned);
 
@@ -92,7 +92,6 @@ fn process2(input: String) -> i64 {
         card_nr += 1;
     }
 
-    card_nr = 1;
 
     for id in 1..(deck.cards.len() + 1) as i64 {
         // print current amount of card

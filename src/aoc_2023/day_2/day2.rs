@@ -75,12 +75,6 @@ fn process1(input: String) -> i64 {
 
 // searches the fewest possible amount of each color to complete a game and multiplies them
 fn process2(input: String) -> i64 {
-    let amounts: HashMap<&str, i64> = HashMap::from([
-        ("red", 12),
-        ("green", 13),
-        ("blue", 14)
-    ]);
-
     let game_re: Regex = Regex::new(r"Game \d+: ").unwrap();
 
     let lines: Vec<_> = input.lines().collect();
@@ -100,7 +94,7 @@ fn process2(input: String) -> i64 {
 
 
         // iterate over each group in the line
-        'outer: for group in line_groups {
+        for group in line_groups {
             // clean up the group, remove whitespace and split into parts
             // each part is a pulled color and its amount
             let group_parts: Vec<_> = group.trim().split(",").collect();

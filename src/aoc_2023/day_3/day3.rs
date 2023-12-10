@@ -9,12 +9,12 @@ pub fn solve_day_3() {
 }
 
 fn process1(input: String) -> (i64, i64) {
-    let mut lines: Vec<_> = input.lines().collect();
+    let lines: Vec<_> = input.lines().collect();
     let mut lines_cleaned: Vec<String> = Vec::new();
 
     let mut result1: Vec<i64> = Vec::new();
     let mut result2: Vec<i64> = Vec::new();
-    for mut line in lines {
+    for line in lines {
         let cleaned = line.replace(".", " ");
         lines_cleaned.push(cleaned.to_owned());
     }
@@ -24,8 +24,8 @@ fn process1(input: String) -> (i64, i64) {
 
         println!("");
         for char_index in 0..lines_cleaned[line_index].len() {
-            let mut char = lines_cleaned[line_index].chars().nth(char_index).unwrap();
-            let mut ret: Vec<i64> = Vec::new();
+            let char = lines_cleaned[line_index].chars().nth(char_index).unwrap();
+            let ret: Vec<i64>;
             if !char.is_digit(10) && !char.is_whitespace() {
                 ret = check_surrounding(lines_cleaned.clone().to_owned(),
                                             line_index,
@@ -54,28 +54,28 @@ fn check_surrounding(lines: Vec<String>, line_index:usize, index: usize) -> Vec<
     let line_size = lines[line_index].len();
 
     if line_index > 0 {
-        let mut upper = lines[line_index - 1].to_owned();
-        let mut upper_numbers = re.find_iter(&upper);
-        result.append(&mut check_matches(upper_numbers, index, line_size, &re));
+        let upper = lines[line_index - 1].to_owned();
+        let upper_numbers = re.find_iter(&upper);
+        result.append(&mut check_matches(upper_numbers, index, line_size));
 
     }
 
     if line_index < lines.len() - 1 {
-        let mut lower = lines[line_index + 1].to_owned();
-        let mut lower_numbers = re.find_iter(&lower);
-        result.append(&mut check_matches(lower_numbers, index, line_size, &re));
+        let lower = lines[line_index + 1].to_owned();
+        let lower_numbers = re.find_iter(&lower);
+        result.append(&mut check_matches(lower_numbers, index, line_size));
     }
 
-    let mut line = lines[line_index].to_owned();
-    let mut line_numbers = re.find_iter(&line);
+    let line = lines[line_index].to_owned();
+    let line_numbers = re.find_iter(&line);
 
-    result.append(&mut check_matches(line_numbers, index, line_size, &re));
+    result.append(&mut check_matches(line_numbers, index, line_size));
 
     result
 
 }
 
-fn check_matches(line: Matches, index: usize, line_size: usize, re: &Regex) -> (Vec<i64>) {
+fn check_matches(line: Matches, index: usize, line_size: usize) -> Vec<i64> {
     let mut result: Vec<i64> = Vec::new();
 
     let left_bound = if index <= 3 {3 - index} else {0};
@@ -90,8 +90,4 @@ fn check_matches(line: Matches, index: usize, line_size: usize, re: &Regex) -> (
     }
 
     result
-}
-
-fn process2(input: String) -> i64 {
-    0
 }

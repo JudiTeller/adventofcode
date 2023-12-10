@@ -56,9 +56,6 @@ fn process2(input: String) -> i64 {
 
         let mut parts = "".to_string();
 
-        let mut lowest: (i64, &str) = (100, "");
-        let mut highest: (i64, &str) = (0, "");
-
         // find first and last substring from DINGUSES in line
         let  matches: HashMap<_,_> = DINGUSES.iter().flat_map(|dingus| line.match_indices(dingus)).collect();
 
