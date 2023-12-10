@@ -22,8 +22,6 @@ fn process1(input: String) -> i64 {
         let mut series: Vec<Vec<i64>> = Vec::new();
         series.push(numbers);
 
-        let test = series.last().unwrap().iter().filter(|&x| *x != 0).count();
-
         // while the last entry of series does not only contain 0s
         while series.last().unwrap().iter().filter(|&x| *x != 0).count() > 0 {
             let last_entry = series.last().unwrap();
@@ -79,8 +77,6 @@ fn process2(input: String) -> i64 {
 
         let mut series: Vec<Vec<i64>> = Vec::new();
         series.push(numbers);
-
-        let test = series.last().unwrap().iter().filter(|&x| *x != 0).count();
 
         // while the last entry of series does not only contain 0s
         while series.last().unwrap().iter().filter(|&x| *x != 0).count() > 0 {
