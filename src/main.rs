@@ -8,7 +8,7 @@ pub mod reader;
 
 fn main() {
     let starttime = Instant::now();
-    aoc_2023::day_9::day9::solve_day_9();
+    aoc_2023::day_11::day11::solve_day_11();
     println!("Time elapsed: {}ms", starttime.elapsed().as_millis());
 
     if starttime > Instant::now() {
