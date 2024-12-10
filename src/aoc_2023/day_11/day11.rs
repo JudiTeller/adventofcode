@@ -1,6 +1,5 @@
 use crate::reader::file_io::read_file;
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 struct Star {
     x: i64,
@@ -14,7 +13,6 @@ pub fn solve_day_11() {
     println!("Day 10, Part 2: {}", process2(input));
 }
 
-
 fn process1(input: String) -> i64 {
     let lines = input.split("\n").collect::<Vec<&str>>();
 
@@ -22,7 +20,6 @@ fn process1(input: String) -> i64 {
     let mut column_dots: Vec<i64> = Vec::new();
 
     for (i, c) in lines[0].chars().enumerate() {
-
         // if c is '.', add 1 to column_dots[i]
         if c == '.' {
             column_dots.push(i as i64);
@@ -49,24 +46,21 @@ fn process1(input: String) -> i64 {
 
     for line in 0..lines.len() {
         // insert '.' into expanded at indices in column_dots
-        for i in column_dots.clone().iter().rev(){
+        for i in column_dots.clone().iter().rev() {
             expanded[line].insert((i + 1) as usize, '.');
         }
-
     }
 
     let mut stars: Vec<Star> = Vec::new();
-    let mut last_expanded = false;
 
     let mut counter = lines.len() - 1;
 
     while counter > 0 {
         // if !last_expanded {
-            // if expanded[line] only contains '.', insert a copy of expanded[line] at line + 1
-            if lines[counter].chars().filter(|&x| x == '#').count() == 0 {
-                expanded.insert(counter + 1, expanded[counter].clone());
-                last_expanded = true;
-            }
+        // if expanded[line] only contains '.', insert a copy of expanded[line] at line + 1
+        if lines[counter].chars().filter(|&x| x == '#').count() == 0 {
+            expanded.insert(counter + 1, expanded[counter].clone());
+        }
         // }
         // else {
         //     last_expanded = false;
@@ -77,7 +71,10 @@ fn process1(input: String) -> i64 {
     for (y, line) in expanded.clone().iter().enumerate() {
         for (x, c) in line.chars().enumerate() {
             if c == '#' {
-                stars.push(Star {x: x as i64, y: y as i64});
+                stars.push(Star {
+                    x: x as i64,
+                    y: y as i64,
+                });
             }
         }
     }
@@ -85,7 +82,7 @@ fn process1(input: String) -> i64 {
     let mut result: i64 = 0;
 
     while !stars.is_empty() {
-        let mut current = stars[0];
+        let current = stars[0];
         stars.remove(0);
 
         // calculate length of vector to every other star
@@ -108,7 +105,6 @@ fn process2(input: String) -> i64 {
     let mut column_dots: Vec<i64> = Vec::new();
 
     for (i, c) in lines[0].chars().enumerate() {
-
         // if c is '.', add 1 to column_dots[i]
         if c == '.' {
             column_dots.push(i as i64);
@@ -131,7 +127,10 @@ fn process2(input: String) -> i64 {
     for (y, line) in lines.clone().iter().enumerate() {
         for (x, c) in line.chars().enumerate() {
             if c == '#' {
-                stars.push(Star {x: x as i64, y: y as i64});
+                stars.push(Star {
+                    x: x as i64,
+                    y: y as i64,
+                });
             }
         }
     }
@@ -144,12 +143,11 @@ fn process2(input: String) -> i64 {
         // if line only contains '.', add multiplier to every y value of stars with y > line
         if lines[line].chars().filter(|&x| x == '#').count() == 0 {
             for star in 0..stars.clone().len() {
-                if stars[star].y > line as i64{
+                if stars[star].y > line as i64 {
                     stars[star].y += multiplier - 1;
                 }
             }
         }
-
     }
 
     // iterate over column_dots in reverse and add multiplier to every x value of stars with x > column_dots[i]
@@ -161,11 +159,10 @@ fn process2(input: String) -> i64 {
         }
     }
 
-
     let mut result: i64 = 0;
 
     while !stars.is_empty() {
-        let mut current = stars[0];
+        let current = stars[0];
         stars.remove(0);
 
         // calculate length of vector to every other star

@@ -1,14 +1,13 @@
 use std::collections::HashMap;
 
 pub struct Card {
-    pub card_id: i64,
-    pub winning_numbers: Vec<i64>,
-    pub guesses: Vec<i64>,
-    pub points: i64,
+    pub _card_id: i64,
+    pub _winning_numbers: Vec<i64>,
+    pub _guesses: Vec<i64>,
+    pub _points: i64,
     pub matches: i64,
     pub amount: i64,
 }
-
 
 // struct cardgame containing a hashmap of cards and their amount
 // implements a function to add cards
@@ -24,12 +23,19 @@ impl CardGame {
         }
     }
 
-    pub fn add_card(&mut self, card_id: i64, winning_numbers: Vec<i64>, guesses: Vec<i64>, points: i64, matches: i64) {
+    pub fn add_card(
+        &mut self,
+        card_id: i64,
+        winning_numbers: Vec<i64>,
+        guesses: Vec<i64>,
+        points: i64,
+        matches: i64,
+    ) {
         let card = Card {
-            card_id,
-            winning_numbers,
-            guesses,
-            points,
+            _card_id: card_id,
+            _winning_numbers: winning_numbers,
+            _guesses: guesses,
+            _points: points,
             matches,
             amount: 1,
         };
