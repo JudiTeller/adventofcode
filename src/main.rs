@@ -8,7 +8,7 @@ pub mod reader;
 
 fn main() {
     let starttime = Instant::now();
-    aoc_2024::day_7::day7::solve_day_7();
+    aoc_2024::day_8::day8::solve_day_8();
     println!("Time elapsed: {}ms", starttime.elapsed().as_millis());
 
     if starttime > Instant::now() {
@@ -35,4 +35,5 @@ fn use_unused_functions() {
     aoc_2024::day_4::day4::solve_day_4();
     aoc_2024::day_5::day5::solve_day_5();
     aoc_2024::day_6::day6::solve_day_6();
+    aoc_2024::day_7::day7::solve_day_7();
 }
